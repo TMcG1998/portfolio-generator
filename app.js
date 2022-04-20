@@ -1,6 +1,6 @@
 const inquirer = require('inquirer');
-// const fs = require('fs');
-// const generatePage = require('./src/page-template.js');
+const fs = require('fs');
+const generatePage = require('./src/page-template.js');
 
 // const pageHTML = generatePage(name, github);
 
@@ -137,8 +137,64 @@ const promptProject = portfolioData => {
     });
 };
 
-promptUser()
-    .then(promptProject)
-    .then(portfolioData => {
-        console.log(portfolioData)
-    });
+// promptUser()
+//     .then(promptProject)
+//     .then(portfolioData => {
+//         const pageHTML = generatePage(portfolioData);
+
+//         fs.writeFile('./index.html', pageHTML, err => {
+//           if (err) throw new Error(err);
+
+//           console.log('Page created! Check out index.html in this directory to see it!');
+//         });
+//     });
+
+
+const test = {
+    name: 'Topmmy',
+    github: 'TMcG',
+    about: 'I am so fricking cool',
+    projects: [
+        { 
+            name: 'Tommy-Project',
+            description: 'Thuis project ius sick',
+            languages: [
+                'JavaScript',
+                'HTML',
+                'CSS',
+                'ES6',
+                'jQuery',
+                'Bootstrap',
+                'Node'
+            ],
+            link: 'link.com',
+            feature: false,
+            confirmAddProject: false
+        }, 
+        {
+            name: 'Tommy-feature-Project',
+            description: 'Thuis featured project ius sick',
+            languages: [
+                'JavaScript',
+                'HTML',
+                'CSS',
+                'ES6',
+                'jQuery',
+                'Bootstrap',
+                'Node'
+            ],
+            link: 'link.com',
+            feature: true,
+            confirmAddProject: false
+        }
+
+]
+    
+}
+    
+const pageHTML = generatePage(test);
+    fs.writeFile('./index.html', pageHTML, err => {
+        if (err) throw new Error(err);
+    
+            console.log('Page created! Check out index.html in this directory to see it!');
+        });
